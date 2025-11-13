@@ -45,26 +45,51 @@ function Footer() {
   )
 }
 
-
-function Header() {
+function NavBar(){
   return (
     <>
-      <header>
-        <span className="logo">Worship Manager</span>
-        <Button text="Entrar" />
-      </header>
+      <nav>
+        <ul>
+          <li><a href="">About</a></li>
+          <li><a href="">Contact</a></li>
+        </ul>
+      </nav>
     </>
   )
 }
 
+function Header({isLoggedIn}) {
+  if(isLoggedIn){
+    return (
+            <>
+              <header>
+                <span className="logo">Worship Manager</span>
+                <NavBar />
+                <Button text="Sair" />
+              </header>
+            </>
+          )
+  }else{
+    return (
+            <>
+              <header>
+                <span className="logo">Worship Manager</span>
+                <Button text="Entrar" />
+              </header>
+            </>
+          )
+  }
+  
+}
+
 function Button({text}) {
-  return <a className="btn-violet">{text}</a>
+  return <button className="btn-violet">{text}</button>
 }
 
 export default function App() {
   return (
     <>
-      <Header />
+      <Header isLoggedIn={true}/>
       <div className="container">
         <h1>Gerencie seus Cultos com Facilidade</h1>
         <p className="intro">Sistema completo para organizar cronogramas de cultos, gerenciar participantes e agendar músicas de forma simples e eficiente.</p>
